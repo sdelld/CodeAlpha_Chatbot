@@ -1,6 +1,6 @@
 # Chatbot evaluation — after-local
 
-Engine **local** · 2026-10-29 18:46 · 76 cases
+Engine **local** · 2026-10-29 18:52 · 76 cases
 
 | Metric | Value |
 |---|---|
@@ -8,8 +8,8 @@ Engine **local** · 2026-10-29 18:46 · 76 cases
 | Expected facts present | 100.0% |
 | Correct tool called | 100.0% |
 | Language match | 100.0% |
-| Latency p50 / p95 | 20 ms / 56 ms |
-| Time to first token p50 / p95 | 20 ms / 56 ms |
+| Latency p50 / p95 | 23 ms / 45 ms |
+| Time to first token p50 / p95 | 23 ms / 44 ms |
 | Tokens in / out | 0 / 0 |
 | Est. cost (paid-tier prices) | $0.0000 total · $0.00000 per conversation |
 

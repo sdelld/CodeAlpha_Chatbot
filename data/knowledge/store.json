@@ -1,43 +1,144 @@
 {
   "business": "Nova Electronics",
   "currency": "EGP",
-  "support": {"phone": "16999", "whatsapp": "+20 100 555 0199", "email": "support@nova-electronics.example",
-              "hours": "Saturday–Thursday 10:00–22:00, Friday 14:00–22:00 (Cairo time)"},
+  "support": {
+    "phone": "16999",
+    "whatsapp": "+20 100 555 0199",
+    "email": "support@nova-electronics.example",
+    "hours": "Saturday–Thursday 10:00–22:00, Friday 14:00–22:00 (Cairo time)",
+    "hours_ar": "السبت للخميس من 10 الصبح لـ 10 بالليل، والجمعة من 2 الظهر لـ 10 بالليل"
+  },
   "policies": [
-    {"id": "shipping", "title": "Shipping and delivery",
-     "text": "Standard delivery inside Cairo and Giza takes 1–2 business days; other governorates take 3–5 business days. Standard delivery costs 75 EGP and is free on orders of 2,500 EGP or more. Express same-day delivery in Cairo and Giza costs 150 EGP for orders placed before 2 PM. We deliver to all 27 governorates. We do not ship outside Egypt."},
-    {"id": "returns", "title": "Returns and exchanges",
-     "text": "You can return or exchange most products within 14 days of delivery if they are unused, in the original box with all accessories and the invoice. Opened headphones and earbuds can only be returned if faulty, for hygiene reasons. Refunds go back to the original payment method within 7–10 business days after we inspect the item; cash-on-delivery orders are refunded by bank transfer or InstaPay. Start a return from My Orders or at any branch. Return pickup is free for faulty items and costs 75 EGP otherwise."},
-    {"id": "warranty", "title": "Warranty",
-     "text": "Every product has an official manufacturer warranty: 12 months for most phones, tablets, headphones and smartwatches, 24 months for most laptops and TVs, and 3–12 months for accessories (see each product). Warranty covers manufacturing defects, not accidental damage, liquid damage or misuse. Nova Care+ extends the warranty by 12 months and adds one accidental-damage repair; it costs 10% of the product price and must be bought within 30 days of purchase. To claim warranty, bring the device and invoice to any branch or request a free pickup from support."},
-    {"id": "payment", "title": "Payment methods",
-     "text": "We accept Visa, Mastercard and Meeza cards, Apple Pay, InstaPay, Fawry (pay at any Fawry outlet within 48 hours), valU, and cash on delivery for orders up to 20,000 EGP. Card payments are processed securely; we never ask for your card PIN or OTP over the phone or chat."},
-    {"id": "installments", "title": "Installments",
-     "text": "Orders of 5,000 EGP or more can be paid in 0% interest installments over 6 or 12 months with credit cards from CIB, NBE, Banque Misr and QNB, or with valU (6, 12 or 24 months; valU fees may apply for 24 months). Choose installments at checkout or ask at any branch with your national ID."},
-    {"id": "price_match", "title": "Price match",
-     "text": "If an authorised Egyptian retailer sells the identical new product in stock for less, we match the price. Send the link to support before you buy. Marketplace sellers, used items and flash sales are excluded."},
-    {"id": "orders", "title": "Orders, cancellation and address changes",
-     "text": "You can cancel an order for free until it ships from My Orders. After it ships, refuse the delivery or return it within 14 days. You can change the delivery address until the order ships. Order numbers look like NV12345 and are in your confirmation SMS and email."},
-    {"id": "gift_cards", "title": "Gift cards",
-     "text": "Digital gift cards are available from 500 to 20,000 EGP, valid for 2 years and usable online and in branches. They can't be exchanged for cash."},
-    {"id": "trade_in", "title": "Trade-in",
-     "text": "Trade in your old phone, tablet or laptop at any branch and get its value as a discount on a new device. Value depends on model and condition and is confirmed after inspection."},
-    {"id": "account", "title": "Account help",
-     "text": "To reset your password, tap Forgot password on the login page and follow the SMS or email link. You can change your phone number, email and addresses from My Account → Settings."},
-    {"id": "student_offer", "title": "Student offer",
-     "text": "University students get 5% off laptops and tablets (up to 2,000 EGP discount) with a valid university ID or .edu.eg email, once per semester. Not combinable with other promotions."}
+    {
+      "id": "shipping",
+      "title": "Shipping and delivery",
+      "text": "Standard delivery inside Cairo and Giza takes 1–2 business days; other governorates take 3–5 business days. Standard delivery costs 75 EGP and is free on orders of 2,500 EGP or more. Express same-day delivery in Cairo and Giza costs 150 EGP for orders placed before 2 PM. We deliver to all 27 governorates. We do not ship outside Egypt.",
+      "text_ar": "التوصيل داخل القاهرة والجيزة بياخد من يوم ليومين عمل، وباقي المحافظات من 3 إلى 5 أيام عمل. التوصيل العادي بـ 75 جنيه ومجاني للطلبات من 2,500 جنيه أو أكتر. التوصيل السريع في نفس اليوم في القاهرة والجيزة بـ 150 جنيه للطلبات قبل الساعة 2 الظهر. بنوصل لكل المحافظات الـ 27، ومش بنشحن برا مصر."
+    },
+    {
+      "id": "returns",
+      "title": "Returns and exchanges",
+      "text": "You can return or exchange most products within 14 days of delivery if they are unused, in the original box with all accessories and the invoice. Opened headphones and earbuds can only be returned if faulty, for hygiene reasons. Refunds go back to the original payment method within 7–10 business days after we inspect the item; cash-on-delivery orders are refunded by bank transfer or InstaPay. Start a return from My Orders or at any branch. Return pickup is free for faulty items and costs 75 EGP otherwise.",
+      "text_ar": "تقدر ترجّع أو تستبدل أغلب المنتجات خلال 14 يوم من الاستلام لو مش مستخدمة وفي علبتها الأصلية بكل مشتملاتها ومعاها الفاتورة. السماعات المفتوحة بتترجع بس لو فيها عيب صناعة لأسباب صحية. الفلوس بترجع على نفس طريقة الدفع خلال 7 إلى 10 أيام عمل بعد فحص المنتج."
+    },
+    {
+      "id": "warranty",
+      "title": "Warranty",
+      "text": "Every product has an official manufacturer warranty: 12 months for most phones, tablets, headphones and smartwatches, 24 months for most laptops and TVs, and 3–12 months for accessories (see each product). Warranty covers manufacturing defects, not accidental damage, liquid damage or misuse. Nova Care+ extends the warranty by 12 months and adds one accidental-damage repair; it costs 10% of the product price and must be bought within 30 days of purchase. To claim warranty, bring the device and invoice to any branch or request a free pickup from support.",
+      "text_ar": "كل المنتجات عليها ضمان الوكيل الرسمي: 12 شهر لأغلب الموبايلات والتابلت والسماعات والساعات، و24 شهر لأغلب اللابتوبات والشاشات، ومن 3 لـ 12 شهر للإكسسوارات. الضمان بيغطي عيوب الصناعة مش الكسر أو المية. نوفا كير+ بيمد الضمان 12 شهر وبيغطي تصليح كسر مرة واحدة بـ 10% من سعر المنتج."
+    },
+    {
+      "id": "payment",
+      "title": "Payment methods",
+      "text": "We accept Visa, Mastercard and Meeza cards, Apple Pay, InstaPay, Fawry (pay at any Fawry outlet within 48 hours), valU, and cash on delivery for orders up to 20,000 EGP. Card payments are processed securely; we never ask for your card PIN or OTP over the phone or chat.",
+      "text_ar": "بنقبل فيزا وماستركارد وميزة وApple Pay وإنستاباي وفوري وvalU، والدفع عند الاستلام للطلبات لحد 20,000 جنيه. عمرنا ما بنطلب الـ PIN أو الـ OTP بتاع الكارت."
+    },
+    {
+      "id": "installments",
+      "title": "Installments",
+      "text": "Orders of 5,000 EGP or more can be paid in 0% interest installments over 6 or 12 months with credit cards from CIB, NBE, Banque Misr and QNB, or with valU (6, 12 or 24 months; valU fees may apply for 24 months). Choose installments at checkout or ask at any branch with your national ID.",
+      "text_ar": "الطلبات من 5,000 جنيه أو أكتر ممكن تتقسط بدون فوائد (0%) على 6 أو 12 شهر بكروت CIB والأهلي وبنك مصر وQNB، أو بـ valU على 6 أو 12 أو 24 شهر."
+    },
+    {
+      "id": "price_match",
+      "title": "Price match",
+      "text": "If an authorised Egyptian retailer sells the identical new product in stock for less, we match the price. Send the link to support before you buy. Marketplace sellers, used items and flash sales are excluded.",
+      "text_ar": "لو تاجر معتمد في مصر بيبيع نفس المنتج الجديد بسعر أقل وموجود عنده، بنطابق السعر. ابعت اللينك لخدمة العملاء قبل ما تشتري."
+    },
+    {
+      "id": "orders",
+      "title": "Orders, cancellation and address changes",
+      "text": "You can cancel an order for free until it ships from My Orders. After it ships, refuse the delivery or return it within 14 days. You can change the delivery address until the order ships. Order numbers look like NV12345 and are in your confirmation SMS and email.",
+      "text_ar": "تقدر تلغي الطلب ببلاش لحد ما يتشحن من صفحة طلباتي، وتقدر تغيّر العنوان قبل الشحن. رقم الطلب شكله كده NV12345 وموجود في رسالة التأكيد."
+    },
+    {
+      "id": "gift_cards",
+      "title": "Gift cards",
+      "text": "Digital gift cards are available from 500 to 20,000 EGP, valid for 2 years and usable online and in branches. They can't be exchanged for cash.",
+      "text_ar": "كروت الهدايا الرقمية من 500 لـ 20,000 جنيه وصالحة لمدة سنتين أونلاين وفي الفروع."
+    },
+    {
+      "id": "trade_in",
+      "title": "Trade-in",
+      "text": "Trade in your old phone, tablet or laptop at any branch and get its value as a discount on a new device. Value depends on model and condition and is confirmed after inspection.",
+      "text_ar": "تقدر تبدّل موبايلك أو التابلت أو اللابتوب القديم في أي فرع وقيمته تتخصم من الجهاز الجديد بعد الفحص."
+    },
+    {
+      "id": "account",
+      "title": "Account help",
+      "text": "To reset your password, tap Forgot password on the login page and follow the SMS or email link. You can change your phone number, email and addresses from My Account → Settings.",
+      "text_ar": "عشان تغيّر الباسورد اضغط على نسيت كلمة المرور في صفحة الدخول. وتقدر تعدّل بياناتك من حسابي ← الإعدادات."
+    },
+    {
+      "id": "student_offer",
+      "title": "Student offer",
+      "text": "University students get 5% off laptops and tablets (up to 2,000 EGP discount) with a valid university ID or .edu.eg email, once per semester. Not combinable with other promotions.",
+      "text_ar": "طلاب الجامعة ليهم خصم 5% على اللابتوبات والتابلت (لحد 2,000 جنيه) بكارنيه الجامعة أو إيميل .edu.eg مرة كل ترم."
+    }
   ],
   "branches": [
-    {"id": "nasr-city", "name": "Nasr City — City Stars Mall", "address": "City Stars Mall, Phase 2, Ground floor, Nasr City, Cairo", "hours": "Daily 10:00–23:00", "phone": "02 2480 1000"},
-    {"id": "maadi", "name": "Maadi — Road 9", "address": "21 Road 9, Maadi, Cairo", "hours": "Saturday–Thursday 10:00–22:00, Friday 14:00–22:00", "phone": "02 2358 2000"},
-    {"id": "zayed", "name": "Sheikh Zayed — Arkan Plaza", "address": "Arkan Plaza, Building 3, Sheikh Zayed, Giza", "hours": "Daily 10:00–23:00", "phone": "02 3851 3000"},
-    {"id": "alexandria", "name": "Alexandria — San Stefano", "address": "San Stefano Grand Plaza, Level 1, Alexandria", "hours": "Daily 10:00–23:00", "phone": "03 4690 4000"}
+    {
+      "id": "nasr-city",
+      "name": "Nasr City — City Stars Mall",
+      "address": "City Stars Mall, Phase 2, Ground floor, Nasr City, Cairo",
+      "hours": "Daily 10:00–23:00",
+      "phone": "02 2480 1000",
+      "name_ar": "فرع مدينة نصر — سيتي ستارز",
+      "hours_ar": "يوميًا من 10 الصبح لـ 11 بالليل"
+    },
+    {
+      "id": "maadi",
+      "name": "Maadi — Road 9",
+      "address": "21 Road 9, Maadi, Cairo",
+      "hours": "Saturday–Thursday 10:00–22:00, Friday 14:00–22:00",
+      "phone": "02 2358 2000",
+      "name_ar": "فرع المعادي — شارع 9",
+      "hours_ar": "السبت للخميس من 10 الصبح لـ 10 بالليل، والجمعة من 2 الظهر لـ 10 بالليل"
+    },
+    {
+      "id": "zayed",
+      "name": "Sheikh Zayed — Arkan Plaza",
+      "address": "Arkan Plaza, Building 3, Sheikh Zayed, Giza",
+      "hours": "Daily 10:00–23:00",
+      "phone": "02 3851 3000",
+      "name_ar": "فرع الشيخ زايد — أركان بلازا",
+      "hours_ar": "يوميًا من 10 الصبح لـ 11 بالليل"
+    },
+    {
+      "id": "alexandria",
+      "name": "Alexandria — San Stefano",
+      "address": "San Stefano Grand Plaza, Level 1, Alexandria",
+      "hours": "Daily 10:00–23:00",
+      "phone": "03 4690 4000",
+      "name_ar": "فرع إسكندرية — سان ستيفانو",
+      "hours_ar": "يوميًا من 10 الصبح لـ 11 بالليل"
+    }
   ],
   "faqs": [
-    {"q": "Are your products original?", "a": "Yes. Everything we sell is new, original and comes with the official local manufacturer warranty."},
-    {"q": "Can I pick up my online order from a branch?", "a": "Yes. Choose Click & Collect at checkout; your order is usually ready in 2 hours at the branch you choose, and pickup is free."},
-    {"q": "Do you have delivery on Fridays?", "a": "Yes, deliveries run every day including Fridays, except official holidays."},
-    {"q": "Do you sell used or refurbished devices?", "a": "No, we only sell new devices."},
-    {"q": "Do you offer setup or data transfer?", "a": "Yes. Free data transfer and setup is available in all branches when you buy a phone, tablet or laptop."}
+    {
+      "q": "Are your products original?",
+      "a": "Yes. Everything we sell is new, original and comes with the official local manufacturer warranty.",
+      "a_ar": "أيوه، كل منتجاتنا جديدة وأصلية وعليها ضمان الوكيل الرسمي."
+    },
+    {
+      "q": "Can I pick up my online order from a branch?",
+      "a": "Yes. Choose Click & Collect at checkout; your order is usually ready in 2 hours at the branch you choose, and pickup is free.",
+      "a_ar": "أيوه، اختار الاستلام من الفرع وعادة الطلب بيبقى جاهز خلال ساعتين ببلاش."
+    },
+    {
+      "q": "Do you have delivery on Fridays?",
+      "a": "Yes, deliveries run every day including Fridays, except official holidays.",
+      "a_ar": "أيوه، التوصيل شغال كل يوم حتى الجمعة ما عدا الإجازات الرسمية."
+    },
+    {
+      "q": "Do you sell used or refurbished devices?",
+      "a": "No, we only sell new devices.",
+      "a_ar": "لا، بنبيع أجهزة جديدة بس."
+    },
+    {
+      "q": "Do you offer setup or data transfer?",
+      "a": "Yes. Free data transfer and setup is available in all branches when you buy a phone, tablet or laptop.",
+      "a_ar": "أيوه، نقل البيانات والتجهيز ببلاش في كل الفروع لما تشتري موبايل أو تابلت أو لابتوب."
+    }
   ]
 }

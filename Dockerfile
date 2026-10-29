@@ -7,9 +7,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
-RUN useradd --create-home appuser && mkdir -p logs && chown appuser logs
+RUN useradd --create-home appuser && mkdir -p logs data/cache && chown -R appuser logs data/cache
 USER appuser
 
 EXPOSE 8080
-# --preload trains the model once in the master process; workers share it.
-CMD gunicorn app:app --preload --bind 0.0.0.0:${PORT} --workers ${WEB_CONCURRENCY:-2} --threads 4 --access-logfile -
+# One process with many threads: sessions and caches live in memory (use Redis to run several processes/instances).
+# Streaming responses need a threaded worker and no request timeout cut-off mid-stream.
+CMD gunicorn app:app --bind 0.0.0.0:${PORT} --workers 1 --threads ${THREADS:-16} --timeout 120 --access-logfile -

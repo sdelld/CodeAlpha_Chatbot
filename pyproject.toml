@@ -1,0 +1,24 @@
+[project]
+name = "nova-chatbot"
+version = "2.0.0"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 130
+target-version = "py311"
+extend-exclude = ["legacy"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "S"]
+ignore = ["S101", "B008", "SIM108"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S105", "S106", "E501"]
+"nova/local_engine.py" = ["E501"]
+"nova/lang.py" = ["E501"]
+"nova/prompts.py" = ["E501"]  # prompt prose
+"nova/tools.py" = ["E501"]    # tool descriptions for the model
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:cacheprovider"

@@ -54,11 +54,11 @@ def check_case(case, result):
     else:
         lang_ok = bool(raw.strip())
     passed = not missing and not forbidden and tool_ok and lang_ok
-    return {"passed": passed, "missing_facts": missing, "forbidden_found": forbidden, "tool_ok": tool_ok,
-            "language_ok": lang_ok}
+    return {"passed": passed, "missing_facts": missing, "forbidden_found": forbidden, "tool_ok": tool_ok, "language_ok": lang_ok}
 
 
 # ---------------- engines ----------------
+
 
 class LegacyEngine:
     """Adapter for the v1 intent-classifier bot (kept in legacy/ for reproducible baselines)."""
@@ -81,13 +81,22 @@ class LegacyEngine:
         session["context"] = r.get("context")
         ms = (time.perf_counter() - t0) * 1000
         tools = ["get_order_status"] if r.get("intent") == "order_lookup" else []
-        return {"reply": r["reply"], "tools": tools, "ttft_ms": ms, "latency_ms": ms, "tokens_in": 0,
-                "tokens_out": 0, "cost_usd": 0.0, "engine": self.name}
+        return {
+            "reply": r["reply"],
+            "tools": tools,
+            "ttft_ms": ms,
+            "latency_ms": ms,
+            "tokens_in": 0,
+            "tokens_out": 0,
+            "cost_usd": 0.0,
+            "engine": self.name,
+        }
 
 
 class V2Engine:
     def __init__(self, mode):
         from nova.assistant import Assistant
+
         self.assistant = Assistant.create(mode=mode)
         self.name = self.assistant.engine_name
 
@@ -127,18 +136,25 @@ Answer with JSON only: {{"accuracy": n, "helpfulness": n, "tone": n, "language_m
 class Judge:
     def __init__(self):
         from nova.llm import GeminiClient
+
         self.client = GeminiClient.from_env(model_env="GEMINI_JUDGE_MODEL")
 
     def score(self, case, reply):
-        prompt = JUDGE_PROMPT.format(category=case["category"], language=case["language"],
-                                     context=case["context"] or "none", input=case["input"],
-                                     facts=case["expected_facts"] or "none", forbidden=case["must_not_contain"] or "none",
-                                     reply=reply)
+        prompt = JUDGE_PROMPT.format(
+            category=case["category"],
+            language=case["language"],
+            context=case["context"] or "none",
+            input=case["input"],
+            facts=case["expected_facts"] or "none",
+            forbidden=case["must_not_contain"] or "none",
+            reply=reply,
+        )
         out = self.client.generate_json(prompt)
         return {k: out.get(k) for k in ("accuracy", "helpfulness", "tone", "language_match", "comment")}
 
 
 # ---------------- run ----------------
+
 
 def percentile(values, p):
     if not values:
@@ -149,8 +165,8 @@ def percentile(values, p):
     return values[lo] + (values[hi] - values[lo]) * (k - lo)
 
 
-def run(engine_kind, label, use_judge, only=None, delay=0.0):
-    cases = json.loads((HERE / "cases.json").read_text(encoding="utf-8"))["cases"]
+def run(engine_kind, label, use_judge, only=None, delay=0.0, cases_file="cases.json"):
+    cases = json.loads((HERE / cases_file).read_text(encoding="utf-8"))["cases"]
     if only:
         cases = [c for c in cases if c["id"] in only or c["category"] in only]
     engine = make_engine(engine_kind)
@@ -168,19 +184,31 @@ def run(engine_kind, label, use_judge, only=None, delay=0.0):
             time.sleep(delay)
         r = engine.respond(session, case["input"])
         check = check_case(case, r)
-        row = {"id": case["id"], "category": case["category"], "language": case["language"], "input": case["input"],
-               "reply": r["reply"], "tools": r.get("tools", []), "latency_ms": round(r["latency_ms"], 1),
-               "ttft_ms": round(r.get("ttft_ms", r["latency_ms"]), 1), "tokens_in": r.get("tokens_in", 0),
-               "tokens_out": r.get("tokens_out", 0), "cost_usd": r.get("cost_usd", 0.0), "engine": r.get("engine"),
-               **check}
+        row = {
+            "id": case["id"],
+            "category": case["category"],
+            "language": case["language"],
+            "input": case["input"],
+            "reply": r["reply"],
+            "tools": r.get("tools", []),
+            "latency_ms": round(r["latency_ms"], 1),
+            "ttft_ms": round(r.get("ttft_ms", r["latency_ms"]), 1),
+            "tokens_in": r.get("tokens_in", 0),
+            "tokens_out": r.get("tokens_out", 0),
+            "cost_usd": r.get("cost_usd", 0.0),
+            "engine": r.get("engine"),
+            **check,
+        }
         if judge:
             try:
                 row["judge"] = judge.score(case, r["reply"])
             except Exception as e:
                 row["judge"] = {"error": str(e)[:200]}
         results.append(row)
-        print(f"[{i:>2}/{len(cases)}] {'PASS' if check['passed'] else 'FAIL'} {case['id']:<9} {r['latency_ms']:>7.0f} ms  "
-              f"{(r['reply'] or '').replace(chr(10), ' ')[:90]}")
+        print(
+            f"[{i:>2}/{len(cases)}] {'PASS' if check['passed'] else 'FAIL'} {case['id']:<9} {r['latency_ms']:>7.0f} ms  "
+            f"{(r['reply'] or '').replace(chr(10), ' ')[:90]}"
+        )
         time.sleep(delay)
     summary = summarise(results, engine.name, label)
     REPORTS.mkdir(exist_ok=True)
@@ -190,9 +218,11 @@ def run(engine_kind, label, use_judge, only=None, delay=0.0):
     (REPORTS / f"{label}.md").write_text(md, encoding="utf-8")
     (HERE / "report.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     (HERE / "report.md").write_text(md, encoding="utf-8")
-    print(f"\n{summary['passed']}/{summary['total']} passed ({summary['pass_rate']:.1%}) · "
-          f"p50 {summary['latency_p50_ms']:.0f} ms · p95 {summary['latency_p95_ms']:.0f} ms · "
-          f"tokens {summary['tokens_in']}/{summary['tokens_out']} · ${summary['cost_usd']:.4f}")
+    print(
+        f"\n{summary['passed']}/{summary['total']} passed ({summary['pass_rate']:.1%}) · "
+        f"p50 {summary['latency_p50_ms']:.0f} ms · p95 {summary['latency_p95_ms']:.0f} ms · "
+        f"tokens {summary['tokens_in']}/{summary['tokens_out']} · ${summary['cost_usd']:.4f}"
+    )
     return payload
 
 
@@ -210,37 +240,52 @@ def summarise(results, engine_name, label):
         judge_avg[k] = round(statistics.mean(vals), 2) if vals else None
     n = len(results)
     return {
-        "label": label, "engine": engine_name, "run_at": time.strftime("%Y-%m-%d %H:%M"), "total": n,
-        "passed": sum(r["passed"] for r in results), "pass_rate": sum(r["passed"] for r in results) / n if n else 0,
+        "label": label,
+        "engine": engine_name,
+        "run_at": time.strftime("%Y-%m-%d %H:%M"),
+        "total": n,
+        "passed": sum(r["passed"] for r in results),
+        "pass_rate": sum(r["passed"] for r in results) / n if n else 0,
         "by_category": {k: {"passed": v[0], "total": v[1], "rate": v[0] / v[1]} for k, v in sorted(by_cat.items())},
         "facts_ok_rate": sum(not r["missing_facts"] for r in results) / n if n else 0,
         "tool_ok_rate": sum(r["tool_ok"] for r in results) / n if n else 0,
         "language_ok_rate": sum(r["language_ok"] for r in results) / n if n else 0,
-        "latency_p50_ms": percentile(lat, .5), "latency_p95_ms": percentile(lat, .95),
-        "ttft_p50_ms": percentile(ttft, .5), "ttft_p95_ms": percentile(ttft, .95),
-        "tokens_in": sum(r["tokens_in"] for r in results), "tokens_out": sum(r["tokens_out"] for r in results),
+        "latency_p50_ms": percentile(lat, 0.5),
+        "latency_p95_ms": percentile(lat, 0.95),
+        "ttft_p50_ms": percentile(ttft, 0.5),
+        "ttft_p95_ms": percentile(ttft, 0.95),
+        "tokens_in": sum(r["tokens_in"] for r in results),
+        "tokens_out": sum(r["tokens_out"] for r in results),
         "cost_usd": round(sum(r["cost_usd"] for r in results), 6),
         "cost_per_conversation_usd": round(sum(r["cost_usd"] for r in results) / n, 6) if n else 0,
-        "judge": judge_avg, "judged_cases": len(judged),
+        "judge": judge_avg,
+        "judged_cases": len(judged),
     }
 
 
 def render_markdown(s, results):
-    lines = [f"# Chatbot evaluation — {s['label']}", "",
-             f"Engine **{s['engine']}** · {s['run_at']} · {s['total']} cases", "",
-             "| Metric | Value |", "|---|---|",
-             f"| Pass rate | **{s['pass_rate']:.1%}** ({s['passed']}/{s['total']}) |",
-             f"| Expected facts present | {s['facts_ok_rate']:.1%} |",
-             f"| Correct tool called | {s['tool_ok_rate']:.1%} |",
-             f"| Language match | {s['language_ok_rate']:.1%} |",
-             f"| Latency p50 / p95 | {s['latency_p50_ms']:.0f} ms / {s['latency_p95_ms']:.0f} ms |",
-             f"| Time to first token p50 / p95 | {s['ttft_p50_ms']:.0f} ms / {s['ttft_p95_ms']:.0f} ms |",
-             f"| Tokens in / out | {s['tokens_in']:,} / {s['tokens_out']:,} |",
-             f"| Est. cost (paid-tier prices) | ${s['cost_usd']:.4f} total · ${s['cost_per_conversation_usd']:.5f} per conversation |"]
+    lines = [
+        f"# Chatbot evaluation — {s['label']}",
+        "",
+        f"Engine **{s['engine']}** · {s['run_at']} · {s['total']} cases",
+        "",
+        "| Metric | Value |",
+        "|---|---|",
+        f"| Pass rate | **{s['pass_rate']:.1%}** ({s['passed']}/{s['total']}) |",
+        f"| Expected facts present | {s['facts_ok_rate']:.1%} |",
+        f"| Correct tool called | {s['tool_ok_rate']:.1%} |",
+        f"| Language match | {s['language_ok_rate']:.1%} |",
+        f"| Latency p50 / p95 | {s['latency_p50_ms']:.0f} ms / {s['latency_p95_ms']:.0f} ms |",
+        f"| Time to first token p50 / p95 | {s['ttft_p50_ms']:.0f} ms / {s['ttft_p95_ms']:.0f} ms |",
+        f"| Tokens in / out | {s['tokens_in']:,} / {s['tokens_out']:,} |",
+        f"| Est. cost (paid-tier prices) | ${s['cost_usd']:.4f} total · ${s['cost_per_conversation_usd']:.5f} per conversation |",
+    ]
     if s["judged_cases"]:
         j = s["judge"]
-        lines.append(f"| LLM judge (1-5): accuracy / helpfulness / tone / language | {j['accuracy']} / {j['helpfulness']} / "
-                     f"{j['tone']} / {j['language_match']} ({s['judged_cases']} cases) |")
+        lines.append(
+            f"| LLM judge (1-5): accuracy / helpfulness / tone / language | {j['accuracy']} / {j['helpfulness']} / "
+            f"{j['tone']} / {j['language_match']} ({s['judged_cases']} cases) |"
+        )
     lines += ["", "## Pass rate by category", "", "| Category | Passed | Rate |", "|---|---|---|"]
     lines += [f"| {k} | {v['passed']}/{v['total']} | {v['rate']:.0%} |" for k, v in s["by_category"].items()]
     failing = [r for r in results if not r["passed"]]
@@ -281,8 +326,10 @@ def compare(labels):
     row("LLM judge accuracy", lambda r: str(r["judge"].get("accuracy") or "—"))
     cats = sorted({c for r in runs for c in r["by_category"]})
     for c in cats:
-        row(f"· {c}", lambda r, c=c: f"{r['by_category'][c]['passed']}/{r['by_category'][c]['total']}"
-            if c in r["by_category"] else "—")
+        row(
+            f"· {c}",
+            lambda r, c=c: f"{r['by_category'][c]['passed']}/{r['by_category'][c]['total']}" if c in r["by_category"] else "—",
+        )
     table = "\n".join(rows)
     report = HERE / "report.md"
     body = report.read_text(encoding="utf-8") if report.exists() else ""
@@ -300,10 +347,18 @@ if __name__ == "__main__":
     ap.add_argument("--only", nargs="*", help="case ids or categories")
     ap.add_argument("--delay", type=float, default=0.0, help="seconds between requests (free-tier rate limits)")
     ap.add_argument("--compare", nargs="+", metavar="LABEL")
+    ap.add_argument("--cases", default="cases.json", help="cases.json (main) or holdout.json")
     a = ap.parse_args()
     if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
         sys.stdout.reconfigure(encoding="utf-8")
     if a.compare:
         compare(a.compare)
     else:
-        run(a.engine, a.label or a.engine, use_judge=not a.no_judge and a.engine != "legacy", only=a.only, delay=a.delay)
+        run(
+            a.engine,
+            a.label or a.engine,
+            use_judge=not a.no_judge and a.engine != "legacy",
+            only=a.only,
+            delay=a.delay,
+            cases_file=a.cases,
+        )

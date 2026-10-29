@@ -1,0 +1,7 @@
+# Render Blueprint: New > Blueprint > pick this repo.
+services:
+  - type: web
+    name: codealpha-chatbot
+    runtime: docker
+    plan: free
+    healthCheckPath: /healthz

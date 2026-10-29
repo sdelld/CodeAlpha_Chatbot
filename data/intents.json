@@ -1,0 +1,495 @@
+{
+  "business": "Nova Electronics",
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "hi",
+        "hello",
+        "hey",
+        "hey there",
+        "good morning",
+        "good evening",
+        "hello is anyone there",
+        "hi bot",
+        "yo",
+        "greetings",
+        "howdy",
+        "hiya",
+        "good afternoon",
+        "hello friend",
+        "hey nova"
+      ],
+      "responses": [
+        "Hi! 👋 Welcome to Nova Electronics. How can I help you today?",
+        "Hello! I'm Nova's assistant. Ask me about orders, shipping, returns or products."
+      ],
+      "suggestions": [
+        "Track my order",
+        "Shipping times",
+        "Return policy"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "bye",
+        "goodbye",
+        "see you",
+        "see you later",
+        "that's all",
+        "i'm done",
+        "talk to you later",
+        "cya",
+        "have a nice day",
+        "ok bye"
+      ],
+      "responses": [
+        "Thanks for visiting Nova Electronics. Have a great day!",
+        "Goodbye! Come back anytime."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "thanks",
+        "thank you",
+        "thank you so much",
+        "thanks a lot",
+        "that helped",
+        "great thanks",
+        "appreciate it",
+        "awesome thank you",
+        "cheers",
+        "perfect thanks"
+      ],
+      "responses": [
+        "You're welcome! Anything else I can help with?",
+        "Happy to help! 😊"
+      ]
+    },
+    {
+      "tag": "opening_hours",
+      "patterns": [
+        "what are your opening hours",
+        "when are you open",
+        "what time do you open",
+        "what time do you close",
+        "are you open on sunday",
+        "store hours",
+        "business hours",
+        "are you open now",
+        "working hours",
+        "opening times on weekends",
+        "what time does support close",
+        "when is customer support available",
+        "hours of operation",
+        "are you open on holidays",
+        "until what time are you open"
+      ],
+      "responses": [
+        "Our online store is open 24/7. Customer support is available Monday–Saturday, 9:00–21:00, and our showroom is open daily 10:00–22:00."
+      ]
+    },
+    {
+      "tag": "shipping_time",
+      "patterns": [
+        "how long does shipping take",
+        "when will my order arrive",
+        "delivery time",
+        "how many days for delivery",
+        "how fast is shipping",
+        "shipping duration",
+        "do you have express delivery",
+        "next day delivery",
+        "how long until i get my package",
+        "estimated delivery",
+        "will it arrive by friday",
+        "same day delivery",
+        "can it be delivered fast",
+        "when does the package arrive",
+        "delivery date for my purchase"
+      ],
+      "responses": [
+        "Standard delivery takes 3–5 business days. Express delivery (1–2 business days) is available at checkout for most items."
+      ],
+      "suggestions": [
+        "Shipping cost",
+        "Track my order"
+      ]
+    },
+    {
+      "tag": "shipping_cost",
+      "patterns": [
+        "how much is shipping",
+        "shipping cost",
+        "is shipping free",
+        "delivery fee",
+        "do you offer free shipping",
+        "how much do you charge for delivery",
+        "shipping price",
+        "free delivery minimum",
+        "what are the delivery charges",
+        "how much for express shipping",
+        "is delivery free over a certain amount",
+        "minimum order for free shipping"
+      ],
+      "responses": [
+        "Shipping is free on orders over $50. Below that, standard shipping is $4.99 and express is $9.99."
+      ]
+    },
+    {
+      "tag": "international_shipping",
+      "patterns": [
+        "do you ship internationally",
+        "do you deliver abroad",
+        "can you ship to another country",
+        "international delivery",
+        "do you ship worldwide",
+        "shipping outside the country",
+        "can i order from overseas",
+        "do you ship to europe",
+        "do you ship to the uk",
+        "can you deliver to saudi arabia",
+        "shipping to the usa and canada",
+        "which countries do you ship to",
+        "can i get it sent to germany",
+        "customs fees for international orders"
+      ],
+      "responses": [
+        "Yes, we ship to 40+ countries. International delivery takes 7–14 business days; costs and any customs fees are shown at checkout."
+      ]
+    },
+    {
+      "tag": "order_tracking",
+      "patterns": [
+        "where is my order",
+        "track my order",
+        "order status",
+        "has my order shipped",
+        "i want to track my package",
+        "tracking number",
+        "my order hasn't arrived",
+        "check order status",
+        "where is my package",
+        "when will my order ship",
+        "track order",
+        "i ordered something days ago and nothing came",
+        "any update on my order",
+        "is my order on the way"
+      ],
+      "responses": [
+        "I can check that for you. Please send your order number (it looks like NV12345)."
+      ],
+      "context_set": "awaiting_order_id"
+    },
+    {
+      "tag": "returns",
+      "patterns": [
+        "what is your return policy",
+        "how do i return an item",
+        "can i return a product",
+        "return policy",
+        "i want to return my order",
+        "how many days to return",
+        "can i exchange an item",
+        "exchange policy",
+        "return a damaged item",
+        "send something back",
+        "i don't like the product can i return it",
+        "wrong item delivered",
+        "how to get a return label"
+      ],
+      "responses": [
+        "You can return most items within 30 days of delivery for a full refund, as long as they're in original condition. Start a return from My Orders → Return item, and we'll email you a free return label."
+      ],
+      "suggestions": [
+        "Refund status",
+        "Talk to a human"
+      ]
+    },
+    {
+      "tag": "refund_status",
+      "patterns": [
+        "where is my refund",
+        "when will i get my refund",
+        "refund status",
+        "how long do refunds take",
+        "i haven't received my refund",
+        "refund not received",
+        "check my refund",
+        "money back timeline"
+      ],
+      "responses": [
+        "Refunds are issued within 2 business days after we receive your return. Your bank may take 5–10 business days to show it."
+      ]
+    },
+    {
+      "tag": "payment_methods",
+      "patterns": [
+        "what payment methods do you accept",
+        "can i pay with paypal",
+        "do you accept credit cards",
+        "payment options",
+        "can i pay cash on delivery",
+        "do you take apple pay",
+        "how can i pay",
+        "is cash on delivery available",
+        "do you accept debit cards"
+      ],
+      "responses": [
+        "We accept Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay and cash on delivery (orders under $500)."
+      ],
+      "suggestions": [
+        "Installments"
+      ]
+    },
+    {
+      "tag": "installments",
+      "patterns": [
+        "do you offer installments",
+        "can i pay in installments",
+        "buy now pay later",
+        "monthly payment plan",
+        "financing options",
+        "split payment",
+        "pay over time",
+        "zero interest installments"
+      ],
+      "responses": [
+        "Yes! Orders over $200 can be split into 3, 6 or 12 monthly payments with 0% interest. Choose 'Installments' at checkout."
+      ]
+    },
+    {
+      "tag": "warranty",
+      "patterns": [
+        "do your products have warranty",
+        "warranty period",
+        "how long is the warranty",
+        "my device is broken under warranty",
+        "warranty claim",
+        "is there a guarantee",
+        "extended warranty",
+        "repair under warranty",
+        "my laptop stopped working",
+        "my headphones are broken",
+        "the screen cracked, is it covered",
+        "device stopped charging after a month",
+        "fix my broken phone",
+        "defective product",
+        "is accidental damage covered"
+      ],
+      "responses": [
+        "All products come with a 1-year manufacturer warranty. You can add Nova Care+ to extend it to 3 years. To make a claim, visit Support → Warranty claim with your order number."
+      ]
+    },
+    {
+      "tag": "product_availability",
+      "patterns": [
+        "is this product in stock",
+        "do you have the iphone in stock",
+        "when will it be back in stock",
+        "is the item available",
+        "out of stock",
+        "product availability",
+        "do you sell laptops",
+        "do you have gaming consoles",
+        "do you sell headphones",
+        "restock date",
+        "will you get more stock soon",
+        "when do you get new stock",
+        "is the samsung tv available",
+        "do you carry smartwatches",
+        "can i preorder the new phone"
+      ],
+      "responses": [
+        "Stock levels are shown live on each product page. If an item is out of stock, click 'Notify me' and we'll email you the moment it's back. We sell phones, laptops, audio, gaming, smart home and accessories."
+      ]
+    },
+    {
+      "tag": "discounts",
+      "patterns": [
+        "do you have any discounts",
+        "promo code",
+        "coupon code",
+        "are there any sales",
+        "student discount",
+        "current offers",
+        "black friday deals",
+        "discount code not working",
+        "any deals today",
+        "any special offers right now",
+        "voucher code for discount",
+        "is there a sale this weekend"
+      ],
+      "responses": [
+        "Check our Deals page for current offers. New subscribers get 10% off their first order, and students get 5% with a verified student email."
+      ]
+    },
+    {
+      "tag": "contact_support",
+      "patterns": [
+        "how can i contact you",
+        "customer service phone number",
+        "contact support",
+        "what is your email",
+        "i need help from support",
+        "support email",
+        "call customer service",
+        "how do i reach you",
+        "what's your whatsapp number",
+        "do you have live chat",
+        "contact details"
+      ],
+      "responses": [
+        "You can reach us at support@nova-electronics.example or +1 (555) 010-2030, Monday–Saturday 9:00–21:00."
+      ]
+    },
+    {
+      "tag": "human_agent",
+      "patterns": [
+        "talk to a human",
+        "i want to speak to a real person",
+        "connect me to an agent",
+        "live agent",
+        "human please",
+        "can i talk to someone",
+        "speak with customer service representative",
+        "transfer me to a person",
+        "agent please",
+        "real human",
+        "this bot is not helping, get me a person"
+      ],
+      "responses": [
+        "Sure — I'm connecting you with a support agent. Average wait time right now is about 3 minutes. You can also email support@nova-electronics.example."
+      ],
+      "handoff": true
+    },
+    {
+      "tag": "store_location",
+      "patterns": [
+        "where is your store",
+        "store location",
+        "do you have a physical store",
+        "showroom address",
+        "where are you located",
+        "can i visit your shop",
+        "nearest store",
+        "store address"
+      ],
+      "responses": [
+        "Our showroom is at 120 Market Street, Downtown, open daily 10:00–22:00. You can also choose free in-store pickup at checkout."
+      ]
+    },
+    {
+      "tag": "account_help",
+      "patterns": [
+        "i forgot my password",
+        "reset password",
+        "can't log in",
+        "how do i create an account",
+        "change my email address",
+        "login problem",
+        "delete my account",
+        "update account details",
+        "locked out of my account",
+        "register a new account",
+        "how do i sign up for an account",
+        "create a profile",
+        "registration problem",
+        "i didn't get the verification email"
+      ],
+      "responses": [
+        "To reset your password, click 'Forgot password' on the login page and follow the email link. For other account changes go to My Account → Settings."
+      ]
+    },
+    {
+      "tag": "cancel_order",
+      "patterns": [
+        "cancel my order",
+        "how do i cancel an order",
+        "i want to cancel",
+        "can i cancel after ordering",
+        "cancel purchase",
+        "stop my order",
+        "i ordered by mistake",
+        "i changed my mind about my order",
+        "don't want the order anymore",
+        "cancel the purchase i made today"
+      ],
+      "responses": [
+        "Orders can be cancelled free of charge until they ship. Go to My Orders → Cancel. If it has already shipped, you can return it within 30 days instead."
+      ]
+    },
+    {
+      "tag": "change_address",
+      "patterns": [
+        "change my delivery address",
+        "wrong shipping address",
+        "update shipping address",
+        "can i change the address on my order",
+        "edit delivery address",
+        "send it to a different address"
+      ],
+      "responses": [
+        "You can change the delivery address from My Orders → Edit address until the order ships. After that, contact support and we'll try to redirect it."
+      ]
+    },
+    {
+      "tag": "price_match",
+      "patterns": [
+        "do you price match",
+        "i found it cheaper elsewhere",
+        "price match guarantee",
+        "another store is cheaper",
+        "can you match a competitor price",
+        "lower price somewhere else",
+        "will you beat a competitor price",
+        "i saw a better price online"
+      ],
+      "responses": [
+        "Yes — we match the price of major authorised retailers on identical in-stock items. Contact support with a link to the offer before you buy."
+      ]
+    },
+    {
+      "tag": "gift_cards",
+      "patterns": [
+        "do you sell gift cards",
+        "gift card",
+        "how do i use a gift card",
+        "gift voucher",
+        "check gift card balance",
+        "buy a gift card for a friend",
+        "buy a voucher",
+        "gift for someone",
+        "can i send a gift card by email",
+        "present card for a friend",
+        "e-gift card"
+      ],
+      "responses": [
+        "Digital gift cards from $10 to $500 are available on our Gift Cards page. Enter the code at checkout to use it, and check its balance under My Account → Gift cards."
+      ]
+    },
+    {
+      "tag": "bot_identity",
+      "patterns": [
+        "who are you",
+        "are you a bot",
+        "are you human",
+        "what can you do",
+        "what is your name",
+        "how can you help me",
+        "help",
+        "what do you know"
+      ],
+      "responses": [
+        "I'm Nova, the virtual assistant for Nova Electronics. I can help with orders, shipping, returns, payments, warranty and more — just ask!"
+      ],
+      "suggestions": [
+        "Track my order",
+        "Payment methods",
+        "Warranty"
+      ]
+    }
+  ]
+}

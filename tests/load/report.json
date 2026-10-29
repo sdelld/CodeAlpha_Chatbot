@@ -1,0 +1,18 @@
+{
+  "url": "http://localhost:8090",
+  "users": 20,
+  "duration_s": 302.7,
+  "requests": 2970,
+  "throughput_rps": 9.81,
+  "error_rate": 0.0,
+  "latency_p50_ms": 24.8,
+  "latency_p95_ms": 41.0,
+  "latency_max_ms": 219.5,
+  "ttft_p50_ms": 23.5,
+  "ttft_p95_ms": 37.2,
+  "latency_mean_ms": 25.2,
+  "engines": {
+    "local": 2970
+  },
+  "error_samples": []
+}

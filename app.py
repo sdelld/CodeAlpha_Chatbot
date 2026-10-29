@@ -8,7 +8,7 @@ from pathlib import Path
 
 from flask import Flask, jsonify, render_template, request
 
-from bot import ChatBot
+from legacy.bot_v1 import ChatBot
 
 LOG_DIR = Path(os.environ.get("LOG_DIR", Path(__file__).resolve().parent / "logs"))
 RATE_LIMIT = int(os.environ.get("RATE_LIMIT_PER_MIN", "30"))

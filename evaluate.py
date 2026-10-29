@@ -9,7 +9,7 @@ from collections import Counter
 
 from sklearn.model_selection import StratifiedKFold, cross_val_score
 
-from bot import DATA_DIR, ChatBot, build_model, load_intents, normalize
+from legacy.bot_v1 import DATA_DIR, ChatBot, build_model, load_intents, normalize
 
 
 def held_out_accuracy(bot, samples, verbose=True):

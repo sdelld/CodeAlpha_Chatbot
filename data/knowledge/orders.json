@@ -1,0 +1,15 @@
+{
+  "_comment": "Demo order database. In production get_order_status calls the order-management API instead.",
+  "orders": [
+    {"id": "NV12345", "status": "shipped", "items": ["PH-002", "AC-002"], "total": 32348, "placed": "2026-10-25",
+     "carrier": "Bosta", "tracking": "BST-882041", "eta": "2026-10-30", "city": "Cairo"},
+    {"id": "NV67890", "status": "processing", "items": ["LP-001"], "total": 54999, "placed": "2026-10-28",
+     "eta": "2026-10-31", "city": "Giza"},
+    {"id": "NV24680", "status": "delivered", "items": ["HP-001"], "total": 7999, "placed": "2026-10-20",
+     "delivered": "2026-10-22", "city": "Alexandria"},
+    {"id": "NV11111", "status": "cancelled", "items": ["GM-001"], "total": 32999, "placed": "2026-10-18",
+     "note": "Cancelled by customer; refund issued on 2026-10-19."},
+    {"id": "NV55555", "status": "ready_for_pickup", "items": ["TB-001"], "total": 27999, "placed": "2026-10-28",
+     "branch": "nasr-city"}
+  ]
+}
